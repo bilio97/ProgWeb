@@ -1,0 +1,17 @@
+p {
+  /*Estilização*/
+  font-size: 16px;
+  border: 10px solid black;
+  background: lightgrey;
+  color: black;
+  /*Tamanho de borda*/
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 16px;
+  border-top-right-radius: 60px;
+  border-top-left-radius: 16px;
+  /*Tamanho de padding*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 30px;
+  padding-left: 40px;
+}
