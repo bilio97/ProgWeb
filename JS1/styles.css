@@ -1,0 +1,35 @@
+.a {
+  float: left;
+}
+
+.b {
+  position: absolute;
+  top: 310px;
+}
+
+.c {
+  width: 115px;
+  height: 200px;
+  margin: 10px 10px 10px 10px;
+  text-align: center;
+}
+
+#multiplicando7 {
+  left: 145px;
+}
+
+#multiplicando8 {
+  left: 280px;
+}
+
+#multiplicando9 {
+  left: 415px;
+}
+
+#multiplicando10 {
+  left: 550px;
+}
+
+tr:hover {
+  background-color: coral;
+}
