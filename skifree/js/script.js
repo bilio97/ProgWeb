@@ -3,12 +3,17 @@
   const FPS = 50;
   const TAMX = 300;
   const TAMY = 400;
-  const PROB_ARVORE = 2;
+  const PROB_ARVORE = 1;
+  const PROB_ARBUSTO= 0.8;
+  const PROB_ROCHA= 0.6;
+  const PROB_TOCO= 0.4;
+  const PROB_CACHORRO= 0.3;
+  const PROB_ARVORE_GRANDE= 0.2;
 
   let montanha;
   let skier;
 
-  const arvores = [];
+  const obstacles = [];
   
   function init() {
     montanha = new Montanha();
@@ -111,13 +116,46 @@
 
   function run() {
     const random = Math.random() * 100;
-    if (random <= PROB_ARVORE) {
+    console.log(random);
+    if (random <= PROB_ARVORE && random >PROB_ARBUSTO) {
       const arvore = new Arvore();
-      arvores.push(arvore);
+      //arvores.push(obstacle);
+      obstacles.push(arvore);
     }
-    arvores.forEach(a => {
+      
+    if(random <= PROB_ARBUSTO && random > PROB_ROCHA) {
+        const obstacle = new ArbustoEmChamas();
+        //arbustos.push(obstacle);
+        obstacles.push(obstacle);
+    }
+
+    if(random <= PROB_ROCHA && random > PROB_TOCO) {
+      const obstacle = new Rocha();
+      //rochas.push(obstacle);
+      obstacles.push(obstacle);
+    }
+    if(random <= PROB_TOCO && random > PROB_CACHORRO) {
+      const obstacle = new TocoDeArvore();
+      //tocos.push(obstacle);
+      obstacles.push(obstacle);
+    }
+
+    if(random <= PROB_CACHORRO && random > PROB_ARVORE_GRANDE) {
+      const obstacle = new Cachorro();
+      //cachorro.push(obstacle);
+      obstacle.push(obstacle);
+    }
+
+    if(random <= PROB_ARVORE_GRANDE) {
+      const obstacle = new ArvoreGrande();
+      //arvoreGrandes.push(obstacle);
+      obstacle.push(obstacle);
+    }
+    
+    obstacles.forEach(a => {
       a.element.style.top = parseInt(a.element.style.top)-1 + 'px';
     })
+    
     skier.andar();
   }
 
