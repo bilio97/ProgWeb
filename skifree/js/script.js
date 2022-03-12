@@ -11,7 +11,7 @@
   
   let FPS = 50;
   let vidas = 3;
-  let metrosPercorridos =0;
+  let metrosPercorridos =0.0;
   let montanha;
   let skier;
 
@@ -66,14 +66,15 @@
       }else if (this.direcao === 2) {
         if (this.acelerado){
           this.element.style.left = parseInt(this.element.style.left)+3 + 'px';
-  //        this.element.style.top = parseInt(this.element.style.top)+1 + 'px';
         }else{
           this.element.style.left = parseInt(this.element.style.left)+1 + 'px';
         }
       }
-      if(this.acelerado){this.element.style.top = parseInt(this.element.style.top)+1 + 'px';}
+      if(this.acelerado){
+        this.element.style.top +=0.5+'px';
+      }
     }
-  }
+    }
 
   class Arvore {
     constructor() {
@@ -137,7 +138,7 @@
   
   function run() {
     const random = Math.random() * 100;
-    console.log("metrosPercorridos:",metrosPercorridos);
+    console.log("metrosPercorridos:",metrosPercorridos+=0.2);
     console.log("vidas",vidas);
     console.log(random);
     if (random <= PROB_ARVORE && random >PROB_ARBUSTO) {
