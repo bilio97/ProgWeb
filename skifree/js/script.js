@@ -60,6 +60,55 @@
     }
   }
 
+  class ArbustoEmChamas {
+    constructor() {
+      this.element = document.createElement('div');
+      this.element.className = 'arbusto';
+      montanha.element.appendChild(this.element);
+      this.element.style.top = `${TAMY}px`;
+      this.element.style.left = Math.floor(Math.random() * TAMX) + 'px';
+    }
+  }
+  class Rocha {
+    constructor() {
+      this.element = document.createElement('div');
+      this.element.className = 'rocha';
+      montanha.element.appendChild(this.element);
+      this.element.style.top = `${TAMY}px`;
+      this.element.style.left = Math.floor(Math.random() * TAMX) + 'px';
+    }
+  }
+
+  class TocoDeArvore {
+    constructor() {
+      this.element = document.createElement('div');
+      this.element.className = 'toco';
+      montanha.element.appendChild(this.element);
+      this.element.style.top = `${TAMY}px`;
+      this.element.style.left = Math.floor(Math.random() * TAMX) + 'px';
+    }
+  }
+
+  class ArvoreGrande {
+    constructor() {
+      this.element = document.createElement('div');
+      this.element.className = 'arvoreGrande';
+      montanha.element.appendChild(this.element);
+      this.element.style.top = `${TAMY}px`;
+      this.element.style.left = Math.floor(Math.random() * TAMX) + 'px';
+    }
+  }
+
+  class Cachorro {
+    constructor() {
+      this.element = document.createElement('div');
+      this.element.className = 'cachorro';
+      montanha.element.appendChild(this.element);
+      this.element.style.top = `${TAMY}px`;
+      this.element.style.left = Math.floor(Math.random() * TAMX) + 'px';
+    }
+  }
+
   function run() {
     const random = Math.random() * 100;
     if (random <= PROB_ARVORE) {

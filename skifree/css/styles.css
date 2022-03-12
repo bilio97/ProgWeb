@@ -8,11 +8,51 @@
   position: absolute;
 }
 
+.rocha {
+  background-image: url(obstacles.png);
+  background-position: -30px -45px;
+  width: 22px;
+  height: 18px;
+  position: absolute;
+}
+
+.arbusto {
+  background-image: url(obstacles.png);
+  background-position: -22px -98px;
+  width: 26px;
+  height: 32px;
+  position: absolute;
+}
+
+.arvoreGrande {
+  background-image: url(obstacles.png);
+  background-position: -95px -66px;
+  width: 34px;
+  height: 64px;
+  position: absolute;
+}
+
+.cachorro {
+  background-image: url(skier.png);
+  background-position: 0px -204px;
+  width: 23px;
+  height: 19px;
+  position: absolute;
+}
+
 .arvore {
   background-image: url(obstacles.png);
   background-position: 0px -31px;
   width: 28px;
   height: 32px;
+  position: absolute;
+}
+
+.toco {
+  background-image: url(obstacles.png);
+  background-position: -250px -45px;
+  width: 20px;
+  height: 18px;
   position: absolute;
 }
 
