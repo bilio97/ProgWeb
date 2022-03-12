@@ -71,7 +71,7 @@
         }
       }
       if(this.acelerado){
-        this.element.style.top +=0.5+'px';
+        this.element.style.top =parseInt(this.element.style.top)+1 + 'px';
       }
     }
     }
