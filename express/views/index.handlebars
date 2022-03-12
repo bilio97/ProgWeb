@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Seja bem-vindo {{msg}}!
+    {{#if isRayn}}
+    Obrigado por ter criado o node js
+    {{#else}}
+    Voce nao eh o Ryan
+
+    <ul>
+        {{#each professores}}
+            <li>Nome: {{nome}},sala: {{sala}}</li>
+        {{/each}}        
+    </ul>
+
+
+</body>
+</html>
