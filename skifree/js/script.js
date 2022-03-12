@@ -1,6 +1,5 @@
 (function () {
 
-  const FPS = 50;
   const TAMX = 300;
   const TAMY = 400;
   const PROB_ARVORE = 1;
@@ -9,7 +8,10 @@
   const PROB_TOCO= 0.4;
   const PROB_CACHORRO= 0.3;
   const PROB_ARVORE_GRANDE= 0.2;
-
+  
+  let FPS = 50;
+  let vidas = 3;
+  let metrosPercorridos =0;
   let montanha;
   let skier;
 
@@ -24,6 +26,7 @@
   window.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') skier.mudarDirecao(-1)
     else if (e.key === 'ArrowRight') skier.mudarDirecao(+1);
+    else if (e.key === 'f'||e.key === 'F') skier.acelerar();
   })
 
   class Montanha {
@@ -39,6 +42,7 @@
       this.element = document.getElementById('skier');
       this.direcoes = ['para-esquerda', 'para-frente', 'para-direita'];
       this.direcao = 1;
+      this.acelerado = false;
       this.element.className = this.direcoes[this.direcao];
       this.element.style.top = '20px';
       this.element.style.left = parseInt(TAMX/2)-8 + 'px';
@@ -49,9 +53,25 @@
         this.element.className = this.direcoes[this.direcao];
       }
     }
+    acelerar() {
+      this.acelerado= !this.acelerado;
+    }
     andar() {
-      if (this.direcao === 0) this.element.style.left = parseInt(this.element.style.left)-1 + 'px';
-      else if (this.direcao === 2) this.element.style.left = parseInt(this.element.style.left)+1 + 'px';
+      if (this.direcao === 0) {
+        if(this.acelerado){
+          this.element.style.left = parseInt(this.element.style.left)-3 + 'px';
+        }else{
+          this.element.style.left = parseInt(this.element.style.left)-1 + 'px';
+      }
+      }else if (this.direcao === 2) {
+        if (this.acelerado){
+          this.element.style.left = parseInt(this.element.style.left)+3 + 'px';
+  //        this.element.style.top = parseInt(this.element.style.top)+1 + 'px';
+        }else{
+          this.element.style.left = parseInt(this.element.style.left)+1 + 'px';
+        }
+      }
+      if(this.acelerado){this.element.style.top = parseInt(this.element.style.top)+1 + 'px';}
     }
   }
 
@@ -114,8 +134,11 @@
     }
   }
 
+  
   function run() {
     const random = Math.random() * 100;
+    console.log("metrosPercorridos:",metrosPercorridos);
+    console.log("vidas",vidas);
     console.log(random);
     if (random <= PROB_ARVORE && random >PROB_ARBUSTO) {
       const arvore = new Arvore();
@@ -143,13 +166,13 @@
     if(random <= PROB_CACHORRO && random > PROB_ARVORE_GRANDE) {
       const obstacle = new Cachorro();
       //cachorro.push(obstacle);
-      obstacle.push(obstacle);
+      obstacles.push(obstacle);
     }
 
     if(random <= PROB_ARVORE_GRANDE) {
       const obstacle = new ArvoreGrande();
       //arvoreGrandes.push(obstacle);
-      obstacle.push(obstacle);
+      obstacles.push(obstacle);
     }
     
     obstacles.forEach(a => {
@@ -158,7 +181,6 @@
     
     skier.andar();
   }
-
   init();
 
 })()
