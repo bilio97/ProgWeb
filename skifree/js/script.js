@@ -62,14 +62,6 @@
     }
   }
 
-  class SkierCaido {
-    constructor() {
-      this.element = document.getElementById('skierCaido');
-      this.element.style.top = '20px';
-      this.element.style.left = parseInt(TAMX/2)-8 + 'px';
-    }
-  }
-
   class Skier {
     constructor() {
       this.element = document.getElementById('skier');
@@ -120,10 +112,11 @@
       perdeVida(){ 
         if(vidas > 0) {
           vidas -=1;
-          document.getElementById("vidas").innerHTML = vidas;         
+          document.getElementById("vidas").innerHTML = vidas;
+          this.element.className = "skierCaido";         
           return false;
         } else { 
-          this.element.className = "cachorro";
+          this.element.className = "skierMorto";
           console.log("O jogo acabou :(");
           return true;
         }

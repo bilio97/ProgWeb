@@ -20,8 +20,20 @@
   position: absolute;
 }
 
-#skierCaido {
+.skierCaido {
   position: absolute;
+  background-image: url(skier.png);
+  background-position: -82px -77px;
+  width: 33px;
+  height: 32px;
+}
+
+.skierMorto {
+  position: absolute;
+  background-image: url(skier.png);
+  background-position: -241px -1px;
+  width: 33px;
+  height: 32px;
 }
 
 .scoreBoard {
