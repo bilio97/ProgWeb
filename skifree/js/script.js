@@ -113,11 +113,16 @@
         if(vidas > 0) {
           vidas -=1;
           document.getElementById("vidas").innerHTML = vidas;
-          this.element.className = "skierCaido";         
+          this.element.className = "skierCaido"; 
+          setTimeout(() => { this.direcao = 1; this.element.className = this.direcoes[this.direcao]; }, 1000);
           return false;
         } else { 
           this.element.className = "skierMorto";
-          console.log("O jogo acabou :(");
+          setTimeout(() => { this.element.className = "skierMorto";
+          let message = "Fim de jogo, sua pontuacao é:"+ metrosPercorridos;
+          window.alert(message); }, 2000);
+          
+          console.log("Fim de jogo");
           return true;
         }
       }
@@ -252,15 +257,13 @@
       if(skier.element.style.top == obj.element.style.top && Math.abs(posLeftSkier-posLeftObstacle) <= 10) {
          if(obj.element.className !== 'cogumelo') { 
             if(skier.perdeVida())
-            console.log("PErdeu vida");   
-            //gameOver();
+            console.log("Perdeu vida");   
          }else{
            skier.ganhaVida();
            console.log("Ganhou vida");
          }
       }
    });
-    
     
     skier.andar();
     delimita(skier);
