@@ -25,6 +25,7 @@
     mps =Math.floor(1000/FPS);
     gameFPS=setInterval(run, mps);
     setInterval(calcularMetros, 1000);
+    document.getElementById("velocidade").innerHTML = '20 m/s';
   }
 
   function calcularMetros() {
@@ -33,6 +34,7 @@
     else 
       metrosPercorridos+=30;
     console.log("Pontuaçao: ",metrosPercorridos);
+    document.getElementById("metros").innerHTML = metrosPercorridos;
   }
 
   function delimita(skier) {
@@ -80,8 +82,10 @@
       clearInterval(gameFPS);
       if(this.acelerado){
        FPS= 75; //Para 30 metros/segundo
+       document.getElementById("velocidade").innerHTML = '30 m/s';
       } else{
         FPS = 50; //Para 20 metros/segundo
+        document.getElementById("velocidade").innerHTML = '20 m/s';
       }
       mps = Math.floor(1000/FPS);
       gameFPS=setInterval(run, mps);
@@ -167,7 +171,6 @@
   
   function run() {
     const random = Math.random() * 100;
-    console.log("vidas",vidas);
     if (random <= PROB_ARVORE && random >PROB_ARBUSTO) {
       const arvore = new Arvore();
       //arvores.push(obstacle);
@@ -209,6 +212,8 @@
     
     skier.andar();
     delimita(skier);
+    document.getElementById("vidas").innerHTML = vidas;
+    
   }
   init();
 
