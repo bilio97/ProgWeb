@@ -35,6 +35,16 @@
     console.log("Pontuaçao: ",metrosPercorridos);
   }
 
+  function delimita(skier) {
+    let posicaoLeft = parseInt(skier.element.style.left);
+    if( posicaoLeft > TAMX-25) { 
+         skier.element.style.left = TAMX-25 + 'px';
+    }
+    else if(posicaoLeft < 5) { 
+       skier.element.style.left = 5 + 'px';
+    }
+ }
+
   window.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') skier.mudarDirecao(-1)
     else if (e.key === 'ArrowRight') skier.mudarDirecao(+1);
@@ -198,6 +208,7 @@
     })
     
     skier.andar();
+    delimita(skier);
   }
   init();
 
