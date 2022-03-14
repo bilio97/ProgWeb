@@ -16,6 +16,7 @@
   let mps; //metros por segundo
   let skier;
   let gameFPS;
+  let metrosCalc;
 
   const obstacles = [];
   
@@ -24,7 +25,7 @@
     skier = new Skier();
     mps =Math.floor(1000/FPS);
     gameFPS=setInterval(run, mps);
-    setInterval(calcularMetros, 1000);
+    metrosCalc=setInterval(calcularMetros, 1000);
     setInterval(gerarCogumelo, 30000); //A cada 30 segundos ele gera um cogumelo
     document.getElementById("velocidade").innerHTML = '20 m/s';
   }
@@ -48,12 +49,13 @@
     }
  }
 
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') skier.mudarDirecao(-1)
-    else if (e.key === 'ArrowRight') skier.mudarDirecao(+1);
-    else if (e.key === 'f'||e.key === 'F') skier.acelerar();
-  })
-
+ function controles (e) {
+   if (e.key === 'ArrowLeft') skier.mudarDirecao(-1)
+   else if (e.key === 'ArrowRight') skier.mudarDirecao(+1);
+   else if (e.key === 'f'||e.key === 'F') skier.acelerar();
+  }
+  
+  window.addEventListener('keydown',controles);
   class Montanha {
     constructor() {
       this.element = document.getElementById('montanha');
@@ -111,19 +113,22 @@
       */
       perdeVida(){ 
         if(vidas > 0) {
-          vidas -=1;
-          document.getElementById("vidas").innerHTML = vidas;
-          this.element.className = "skierCaido"; 
-          setTimeout(() => { this.direcao = 1; this.element.className = this.direcoes[this.direcao]; }, 1000);
-          return false;
+            vidas -=1;
+            document.getElementById("vidas").innerHTML = vidas;
+            this.element.className = "skierCaido";   
+            setTimeout(() => { this.direcao = 1; this.element.className = this.direcoes[this.direcao]; }, 1000);
+            return false;
         } else { 
-          this.element.className = "skierMorto";
-          setTimeout(() => { this.element.className = "skierMorto";
-          let message = "Fim de jogo, sua pontuacao é:"+ metrosPercorridos;
-          window.alert(message); }, 2000);
-          
-          console.log("Fim de jogo");
-          return true;
+            this.element.className = "skierMorto";
+            setTimeout(() => { 
+              this.element.className = "skierMorto";
+              let message = "Fim de jogo, sua pontuacao é:"+ metrosPercorridos;
+              window.alert(message); }, 2000);
+            window.removeEventListener('keydown',controles);
+            clearInterval(gameFPS);
+            clearInterval(metrosCalc);
+            console.log("Fim de jogo");
+            return true;
         }
       }
 
