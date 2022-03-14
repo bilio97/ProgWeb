@@ -2,11 +2,11 @@
 
   const TAMX = 300;
   const TAMY = 400;
-  const PROB_ARVORE = 1;
-  const PROB_ARBUSTO= 0.8;
-  const PROB_ROCHA= 0.6;
-  const PROB_TOCO= 0.4;
-  const PROB_CACHORRO= 0.3;
+  const PROB_ARVORE = 3;
+  const PROB_ARBUSTO= 2.3;
+  const PROB_ROCHA= 1.8;
+  const PROB_TOCO= 1.1;
+  const PROB_CACHORRO= 0.5;
   const PROB_ARVORE_GRANDE= 0.2;
   
   let FPS = 50.0;   //Para 20 metros/segundo 
@@ -25,6 +25,7 @@
     mps =Math.floor(1000/FPS);
     gameFPS=setInterval(run, mps);
     setInterval(calcularMetros, 1000);
+    setInterval(gerarCogumelo, 30000); //A cada 30 segundos ele gera um cogumelo
     document.getElementById("velocidade").innerHTML = '20 m/s';
   }
 
@@ -58,6 +59,14 @@
       this.element = document.getElementById('montanha');
       this.element.style.width = `${TAMX}px`;
       this.element.style.height = `${TAMY}px`;
+    }
+  }
+
+  class SkierCaido {
+    constructor() {
+      this.element = document.getElementById('skierCaido');
+      this.element.style.top = '20px';
+      this.element.style.left = parseInt(TAMX/2)-8 + 'px';
     }
   }
 
@@ -108,7 +117,25 @@
         this.element.style.top =parseInt(this.element.style.top)+1 + 'px';    //Aceleração por pixel fazia o boneco ir descendo a div
       }
       */
-    }
+      perdeVida(){ 
+        if(vidas > 0) {
+          vidas -=1;
+          document.getElementById("vidas").innerHTML = vidas;         
+          return false;
+        } else { 
+          this.element.className = "cachorro";
+          console.log("O jogo acabou :(");
+          return true;
+        }
+      }
+
+      ganhaVida(){
+        if(vidas <3) {
+          vidas +=1; 
+          document.getElementById("vidas").innerHTML = vidas;    
+        }
+      }
+  } 
   class Arvore {
     constructor() {
       this.element = document.createElement('div');
@@ -148,6 +175,16 @@
     }
   }
 
+  class Cogumelo {
+    constructor() {
+      this.element = document.createElement('div');
+      this.element.className = 'cogumelo';
+      montanha.element.appendChild(this.element);
+      this.element.style.top = `${TAMY}px`;
+      this.element.style.left = Math.floor(Math.random() * TAMX) + 'px';
+    }
+  }
+
   class ArvoreGrande {
     constructor() {
       this.element = document.createElement('div');
@@ -168,6 +205,12 @@
     }
   }
 
+  function gerarCogumelo(){
+      if(vidas<3){
+        const obstacle = new Cogumelo();
+        obstacles.push(obstacle);
+      }
+  }
   
   function run() {
     const random = Math.random() * 100;
@@ -200,15 +243,31 @@
       obstacles.push(obstacle);
     }
 
-    if(random <= PROB_ARVORE_GRANDE) {
+    if(random <= PROB_ARVORE_GRANDE ) {
       const obstacle = new ArvoreGrande();
       //arvoreGrandes.push(obstacle);
       obstacles.push(obstacle);
-    }
+    }   
     
     obstacles.forEach(a => {
       a.element.style.top = parseInt(a.element.style.top)-1 + 'px';
     })
+
+    obstacles.forEach(obj => {
+      let posLeftSkier = parseInt(skier.element.style.left);
+      let posLeftObstacle = parseInt(obj.element.style.left); 
+      if(skier.element.style.top == obj.element.style.top && Math.abs(posLeftSkier-posLeftObstacle) <= 10) {
+         if(obj.element.className !== 'cogumelo') { 
+            if(skier.perdeVida())
+            console.log("PErdeu vida");   
+            //gameOver();
+         }else{
+           skier.ganhaVida();
+           console.log("Ganhou vida");
+         }
+      }
+   });
+    
     
     skier.andar();
     delimita(skier);

@@ -20,6 +20,10 @@
   position: absolute;
 }
 
+#skierCaido {
+  position: absolute;
+}
+
 .scoreBoard {
   text-align: center;
   border-radius: 5px;
@@ -72,6 +76,14 @@
   background-image: url(obstacles.png);
   background-position: -250px -45px;
   width: 20px;
+  height: 18px;
+  position: absolute;
+}
+
+.cogumelo {
+  background-image: url(obstacles.png);
+  background-position: -270px -45px;
+  width: 11px;
   height: 18px;
   position: absolute;
 }
