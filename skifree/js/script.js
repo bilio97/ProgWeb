@@ -9,18 +9,30 @@
   const PROB_CACHORRO= 0.3;
   const PROB_ARVORE_GRANDE= 0.2;
   
-  let FPS = 50;
+  let FPS = 50.0;   //Para 20 metros/segundo 
   let vidas = 3;
-  let metrosPercorridos =0.0;
+  let metrosPercorridos = 0;
   let montanha;
+  let mps; //metros por segundo
   let skier;
+  let gameFPS;
 
   const obstacles = [];
   
   function init() {
     montanha = new Montanha();
     skier = new Skier();
-    setInterval(run, 1000/FPS);
+    mps =Math.floor(1000/FPS);
+    gameFPS=setInterval(run, mps);
+    setInterval(calcularMetros, 1000);
+  }
+
+  function calcularMetros() {
+    if(FPS === 50.0)
+      metrosPercorridos+=20;   
+    else 
+      metrosPercorridos+=30;
+    console.log("Pontuaçao: ",metrosPercorridos);
   }
 
   window.addEventListener('keydown', (e) => {
@@ -55,27 +67,34 @@
     }
     acelerar() {
       this.acelerado= !this.acelerado;
+      clearInterval(gameFPS);
+      if(this.acelerado){
+       FPS= 75; //Para 30 metros/segundo
+      } else{
+        FPS = 50; //Para 20 metros/segundo
+      }
+      mps = Math.floor(1000/FPS);
+      gameFPS=setInterval(run, mps);
     }
     andar() {
       if (this.direcao === 0) {
-        if(this.acelerado){
-          this.element.style.left = parseInt(this.element.style.left)-3 + 'px';
-        }else{
+        // if(this.acelerado){
+        //   this.element.style.left = parseInt(this.element.style.left)-3 + 'px'; //Aceleração por pixel
+        // }else{                                                               
           this.element.style.left = parseInt(this.element.style.left)-1 + 'px';
-      }
-      }else if (this.direcao === 2) {
-        if (this.acelerado){
-          this.element.style.left = parseInt(this.element.style.left)+3 + 'px';
-        }else{
+      } else if (this.direcao === 2) {
+        //if (this.acelerado){
+        //   this.element.style.left = parseInt(this.element.style.left)+3 + 'px'; //Aceleração por pixel
+        // }else{                                                                 
           this.element.style.left = parseInt(this.element.style.left)+1 + 'px';
         }
       }
+      /*
       if(this.acelerado){
-        this.element.style.top =parseInt(this.element.style.top)+1 + 'px';
+        this.element.style.top =parseInt(this.element.style.top)+1 + 'px';    //Aceleração por pixel fazia o boneco ir descendo a div
       }
+      */
     }
-    }
-
   class Arvore {
     constructor() {
       this.element = document.createElement('div');
@@ -138,9 +157,7 @@
   
   function run() {
     const random = Math.random() * 100;
-    console.log("metrosPercorridos:",metrosPercorridos+=0.2);
     console.log("vidas",vidas);
-    console.log(random);
     if (random <= PROB_ARVORE && random >PROB_ARBUSTO) {
       const arvore = new Arvore();
       //arvores.push(obstacle);
