@@ -1,6 +1,6 @@
 O padrão MVC serve de base para organizarmos nossos arquivos em diretórios com funções determinadas
 fazendo com que seja mais fácil de manter o código e fazer alterações, separando a aplicação em camadas.
-Que são elas: Model, View, Controller. Na camada Model são definidas as interações da aplicação com o banco de dados, 
+Que são elas: Model, View, Controller. Na camada Model é onde ocorrem interações da aplicação com o banco de dados, 
 são especificados os modelos de dados que serão utilizados, através de tabelas ou coleções. Na camada Controller são 
 definidas as ações/operações que serão feitas nos dados dos Models, podendo ser métodos de CRUD(Create Read Update e Delete), 
 ou operações mais complexas dependendo da aplicação. A camada de View é responsável por gerar o HTML da página que será mostrada ao usuário,
