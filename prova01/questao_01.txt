@@ -1,0 +1,8 @@
+Linha 15, após o head não tem o body do html, sendo assim o conteúdo da linha 15 até a 29 não é válido.
+
+Linha 11 o # deve ser usado para dizer o id do componentente que está recebendo o estilo. Onde está background color na linha 10 deveria ter o #para, e onde está o #para na linha 11, deveria estar background-color.
+
+Linha 18 o <strong> é aberto mas não é definido o fim do trecho de texto em que seria aplicado, com o  </strong> 
+
+Linha 26 tem código java script dentro do style, o var para = document.getElementById("para");
+, isso deveria estar na tag script.
