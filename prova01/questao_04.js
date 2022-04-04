@@ -3,12 +3,10 @@ const { readFile } = require("node:fs/promises");
 let promiseArray = [];
 let fileArray = ["./1.txt", "./2.txt", "./3.txt"];
 
-fileArray.forEach((element) => {
+fileArray.forEach(async (element) => {
   const controller = new AbortController();
   const { signal } = controller;
-  promiseArray.push(async () => {
-    readFile(fileName, { signal });
-  });
+  promiseArray.push(readFile(element, { signal }));
 });
 
 const result = await Promise.all(promiseArray);
