@@ -7,10 +7,12 @@
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "author": "Helio Endrio",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.0",
+    "express-handlebars": "^6.0.5",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
   }

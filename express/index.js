@@ -4,8 +4,8 @@ import router from "./router/router";
 const app = express();
 
 app.engine('handlebars', engine({
-    helpers: {require: `${__dirname}/views/helpers/helpers`},
-    layoutsDir: `${__dirname}/views/layouts`,
+    helpers: {require: __dirname + /views/helpers/helpers},
+    layoutsDir: __dirname+/views/layouts,
 }));
 app.set('view engine','handlebars');
 app.set('views', `${__dirname}/views`),

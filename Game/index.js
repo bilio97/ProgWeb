@@ -1,7 +1,13 @@
-const express = require("express");
-const router = require("./config/routes");
+import express from "express";
+import router from "./config/routes.js";
+import { engine } from "express-handlebars";
 
 const app = express();
+
+app.engine("handlebars", engine());
+app.set("view engine", "handlebars");
+app.set("views", "./views");
+
 app.use(router);
 
 app.listen(3000, function () {

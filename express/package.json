@@ -1,13 +1,13 @@
 {
-  "name": "express",
+  "name": "game",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Helio Endrio",
   "license": "ISC",
   "devDependencies": {
     "esm": "^3.2.25",
