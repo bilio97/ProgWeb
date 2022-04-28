@@ -26,7 +26,7 @@
     mps =Math.floor(1000/FPS);
     gameFPS=setInterval(run, mps);
     metrosCalc=setInterval(calcularMetros, 1000);
-    setInterval(gerarCogumelo, 30000); //A cada 30 segundos ele gera um cogumelo
+    setInterval(gerarCogumelo, 3000); //A cada 30 segundos ele gera um cogumelo
     document.getElementById("velocidade").innerHTML = '20 m/s';
   }
 

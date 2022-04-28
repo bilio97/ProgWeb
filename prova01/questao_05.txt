@@ -1,3 +1,5 @@
+Comentário: Descriçao do MVC correta. Nota 2.0
+
 O padrão MVC serve de base para organizarmos nossos arquivos em diretórios com funções determinadas
 fazendo com que seja mais fácil de manter o código e fazer alterações, separando a aplicação em camadas.
 Que são elas: Model, View, Controller. Na camada Model é onde ocorrem interações da aplicação com o banco de dados, 

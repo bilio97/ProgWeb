@@ -1,3 +1,5 @@
+// Código incorreto
+
 const fs = require("fs");
 const { readFile } = require("node:fs/promises");
 let promiseArray = [];
