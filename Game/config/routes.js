@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const router = express.Router();
+import mainController from "../app/controllers/main.js";
 
 //LOGS
 const logger = morgan;
@@ -22,9 +23,8 @@ router.use(logger("short"));
 router.use("/game", express.static(__dirname + "/../skifree"));
 router.use("/img", express.static(__dirname + "/../public/img"));
 
-router.get("/", function (req, res) {
-  res.send("Hello world!");
-});
+router.get("/", mainController.index);
+router.get("/sobre", mainController.sobre);
 
 router.get("/professores", function (req, res) {
   const profes = [
@@ -36,18 +36,9 @@ router.get("/professores", function (req, res) {
   res.render("index", { professores: profes, layout: false });
 });
 
-router.get("/about", function (req, res) {
-  res.render("about", { layout: false });
-});
-
 //Get com parâmetros
 router.get("/bemvindo/:nome", function (req, res) {
   res.end(`Seja bem vindo ${req.params.nome}`);
-});
-
-//Pagina About
-router.get("/about", function (req, res) {
-  res.end("Bem-vindo à página sobre!");
 });
 
 //Post

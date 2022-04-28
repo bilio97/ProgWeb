@@ -6,7 +6,14 @@ const app = express();
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
-app.set("views", "./views");
+app.set("views", "./app/views");
+app.engine(
+  "handlebars",
+  engine({
+    layoutsDir: "./app/views/layouts",
+    defaultLayout: "layout1",
+  })
+);
 
 app.use(router);
 
