@@ -1,0 +1,123 @@
+#montanha {
+    border: 1px solid black;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #score {
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    width: 20%;
+    height: 30%;
+    left: 400px;
+    top: -265px;
+  }
+  
+  #skier {
+    position: absolute;
+  }
+  
+  .skierCaido {
+    position: absolute;
+    background-image: url(/img/skier.png);
+    background-position: -82px -77px;
+    width: 33px;
+    height: 32px;
+  }
+  
+  .skierMorto {
+    position: absolute;
+    background-image: url(/img/skier.png);
+    background-position: -241px -1px;
+    width: 33px;
+    height: 32px;
+  }
+  
+  .scoreBoard {
+    text-align: center;
+    border-radius: 5px;
+    font-style: italic;
+    color: red;
+    border: 3px solid blue;
+  }
+  
+  .rocha {
+    background-image: url(/img/obstacles.png);
+    background-position: -30px -45px;
+    width: 22px;
+    height: 18px;
+    position: absolute;
+  }
+  
+  .arbusto {
+    background-image: url(/img/obstacles.png);
+    background-position: -22px -98px;
+    width: 26px;
+    height: 32px;
+    position: absolute;
+  }
+  
+  .arvoreGrande {
+    background-image: url(/img/obstacles.png);
+    background-position: -95px -66px;
+    width: 34px;
+    height: 64px;
+    position: absolute;
+  }
+  
+  .cachorro {
+    background-image: url(/img/skier.png);
+    background-position: 0px -204px;
+    width: 23px;
+    height: 19px;
+    position: absolute;
+  }
+  
+  .arvore {
+    background-image: url(/img/obstacles.png);
+    background-position: 0px -31px;
+    width: 28px;
+    height: 32px;
+    position: absolute;
+  }
+  
+  .toco {
+    background-image: url(/img/obstacles.png);
+    background-position: -250px -45px;
+    width: 20px;
+    height: 18px;
+    position: absolute;
+  }
+  
+  .cogumelo {
+    background-image: url(/img/obstacles.png);
+    background-position: -270px -45px;
+    width: 11px;
+    height: 18px;
+    position: absolute;
+  }
+  
+  .para-frente {
+    background-image: url(/img/skier.png);
+    background-position: -67px -2px;
+    width: 15px;
+    height: 32px;
+  }
+  
+  .para-direita {
+    background-image: url(/img/skier.png);
+    background-position: -26px -6px;
+    width: 22px;
+    height: 28px;
+  }
+  
+  .para-esquerda {
+    background-image: url(/img/skier.png);
+    background-position: -26px -43px;
+    width: 22px;
+    height: 28px;
+  }
+  

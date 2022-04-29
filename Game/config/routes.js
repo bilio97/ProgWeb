@@ -1,10 +1,5 @@
 import morgan from "morgan";
 import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const router = express.Router();
 import mainController from "../app/controllers/main.js";
@@ -19,12 +14,11 @@ router.use(function (req, res, next) {
 
 router.use(logger("short"));
 
-//Disponibilizando arquivos
-router.use("/game", express.static(__dirname + "/../skifree"));
-router.use("/img", express.static(__dirname + "/../public/img"));
-
 router.get("/", mainController.index);
-router.get("/sobre", mainController.sobre);
+router.get("/about", mainController.sobre);
+router.get("/ui", mainController.ui);
+router.get("/game", mainController.game);
+
 
 router.get("/professores", function (req, res) {
   const profes = [
