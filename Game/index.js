@@ -1,5 +1,5 @@
 import express from "express";
-import router from "./config/routes.js";
+import router from "./app/router/routes.js";
 import { engine } from "express-handlebars";
 import sass from 'node-sass-middleware';
 import path from "path";

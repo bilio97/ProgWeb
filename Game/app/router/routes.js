@@ -2,7 +2,7 @@ import morgan from "morgan";
 import express from "express";
 
 const router = express.Router();
-import mainController from "../app/controllers/main.js";
+import mainController from "../controllers/main.js";
 
 //LOGS
 const logger = morgan;
