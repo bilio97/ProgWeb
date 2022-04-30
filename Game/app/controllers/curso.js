@@ -1,4 +1,5 @@
 import { Curso } from '../models/index';
+import { Area } from '../models/index';
 
 const cursoController = {
     index: async (req, res, next) => {
@@ -26,7 +27,9 @@ const cursoController = {
         }
     },
     read: async (req, res, next) => {
-        const curso = await Curso.findOne({ where: { id: req.params.id } });
+        const { id } = req.params;
+        const curso = await Curso.findByPk(id, { include: Area });
+        console.log(curso.toJSON());
         res.render('curso/read', {
             curso: curso.toJSON()
         });

@@ -11,6 +11,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th scope="col">ID</th>
                             <th scope="col">Sigla</th>
                             <th scope="col">Nome do Curso</th>
                             <th class="options" scope="col">Opções</th>
@@ -19,6 +20,7 @@
                     <tbody>
                         {{#each cursos}}
                         <tr class="table-info">
+                            <th>{{id}}</th>
                             <th scope="row">{{sigla}}</th>
                             <td>{{nome}}</td>
                             <td class="options">
