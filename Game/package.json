@@ -4,7 +4,7 @@
   "description": "Implementação do SkiFree com pontuação e banco de dados",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon . & npm run scss",
+    "start": "nodemon -r esm index.js & npm run scss",
     "scss": "sass --watch public/scss/main.scss public/css/main.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

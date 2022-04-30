@@ -14,10 +14,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Curso.init({
-    sigla: DataTypes.STRING,
-    nome: DataTypes.STRING,
-    descricao: DataTypes.TEXT,
-    areaId: DataTypes.INTEGER
+    sigla: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    nome: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
+    descricao: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+    },
+    areaId: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    }
   }, {
     sequelize,
     modelName: 'Curso',

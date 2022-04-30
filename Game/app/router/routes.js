@@ -3,6 +3,7 @@ import express from "express";
 
 const router = express.Router();
 import mainController from "../controllers/main.js";
+import areaController from "../controllers/area.js";
 
 //LOGS
 const logger = morgan;
@@ -12,12 +13,16 @@ router.use(function (req, res, next) {
   next();
 });
 
-router.use(logger("short"));
+router.use(logger("combined"));
 
+//Main controller
 router.get("/", mainController.index);
 router.get("/about", mainController.sobre);
 router.get("/ui", mainController.ui);
 router.get("/game", mainController.game);
+
+//Area controller
+router.get("/area", areaController.index);
 
 
 router.get("/professores", function (req, res) {

@@ -14,8 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Partida.init({
-    usuarioId: DataTypes.INTEGER,
-    pontuacao: DataTypes.INTEGER
+    usuarioId: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    pontuacao: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    }
   }, {
     sequelize,
     modelName: 'Partida',

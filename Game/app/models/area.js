@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Area.init({
-    nome: DataTypes.STRING
+    nome: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    }
   }, {
     sequelize,
     modelName: 'Area',
