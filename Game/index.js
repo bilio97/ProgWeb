@@ -40,6 +40,7 @@ app.use('/js', [
   express.static(__dirname + '/public/js')
 ]);
 
+app.use(express.urlencoded({ extended: false }));
 app.use(router);
 
 app.listen(3000, function () {
