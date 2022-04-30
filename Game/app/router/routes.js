@@ -31,30 +31,10 @@ router.get("/curso/create", cursoController.create);
 router.post("/curso/create", cursoController.create);
 router.get("/curso/:id", cursoController.read);
 
-
-router.get("/professores", function (req, res) {
-  const profes = [
-    { nome: "David Fernandes", sala: 1238 },
-    { nome: "Horácio Fernandes", sala: 1233 },
-    { nome: "Edleno Moura", sala: 1236 },
-    { nome: "Elaine Harada", sala: 1231 },
-  ];
-  res.render("index", { professores: profes, layout: false });
-});
-
 //Get com parâmetros
 router.get("/bemvindo/:nome", function (req, res) {
   res.end(`Seja bem vindo ${req.params.nome}`);
 });
 
-//Post
-router.post("/", function (req, res) {
-  res.send("Post");
-});
-
-router.use(function (req, res) {
-  res.statusCode = 404;
-  res.end("404!");
-});
 
 export default router;

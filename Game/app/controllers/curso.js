@@ -11,15 +11,22 @@ const cursoController = {
         if (req.route.methods.get) {
             res.render('curso/create');
         } else {
-            console.log(req.body)
-            await Curso.create({
-                sigla: req.body.sigla,
-                nome: req.body.nome,
-                descricao: req.body.descricao,
-                areaId: req.body.area
+            try {
+                await Curso.create({
+                    sigla: req.body.sigla,
+                    nome: req.body.nome,
+                    descricao: req.body.descricao,
+                    areaId: req.body.area
+                }
+                );
+            } catch (error) {
+                console.log(error);
+                res.render('curso/create', {
+                    curso: req.body,
+                    errors: error.errors
+                });
             }
-            );
-            res.redirect("/");
+
         }
     },
     read: async (req, res, next) => {

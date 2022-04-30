@@ -10,17 +10,17 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-app.engine("handlebars", engine());
-app.set("view engine", "handlebars");
-app.set("views", "./app/views");
 app.engine(
   "handlebars",
   engine({
-    helpers: "./app/views/helpers/helpers",
+    helpers: require(`${__dirname}/app/views/helpers/helpers`),
     layoutsDir: "./app/views/layouts",
     defaultLayout: "main",
-  })
-);
+  }));
+
+
+app.set("view engine", "handlebars");
+app.set("views", "./app/views");
 
 app.use(sass({
   src: `${__dirname}/public/scss`,

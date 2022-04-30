@@ -1,7 +1,19 @@
-const toLower = function (value) {
+export function toLower(value) {
   return value.toLowerCase();
 };
-const toUpper = function (value) {
+export function toUpper(value) {
   return value.toUpperCase();
 };
-module.exports = { toLower, toUpper };
+
+export function showError(errors, field) {
+  let mensagem;
+  if (typeof errors != 'undefined') {
+    errors.forEach(function (error) {
+      if (error.path == field) {
+        mensagem = error.message;
+        return;
+      }
+    });
+    return mensagem;
+  }
+}

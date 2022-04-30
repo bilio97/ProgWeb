@@ -17,10 +17,22 @@ module.exports = (sequelize, DataTypes) => {
     sigla: {
       allowNull: false,
       type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [4],
+          msg: 'A sigla precisa ter 4 caracteres.'
+        }
+      }
     },
     nome: {
       allowNull: false,
       type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [5, 40],
+          msg: 'O nome precisa ter entre 5 e 40 caracteres.'
+        }
+      }
     },
     descricao: {
       allowNull: false,
