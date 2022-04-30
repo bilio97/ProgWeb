@@ -21,10 +21,6 @@ const cursoController = {
                 );
             } catch (error) {
                 console.log(error);
-                res.render('curso/create', {
-                    curso: req.body,
-                    errors: error.errors
-                });
             }
 
         }
