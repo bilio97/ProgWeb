@@ -2,12 +2,12 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.addConstraint('Cursos', {
+    await queryInterface.addConstraint('Partidas', {
       type: 'foreign key',
-      fields: ['areaId'],
-      name: 'curso_area_fk',
+      fields: ['usuarioId'],
+      name: 'partida_usuario_fk',
       references: {
-        table: 'Areas',
+        table: 'Usuarios',
         field: 'id'
       },
       onDelete: 'restrict',
@@ -15,7 +15,8 @@ module.exports = {
     })
   },
 
+
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeConstraint('Cursos', 'curso_area_fk');
+    await queryInterface.removeConstraint('Partidas', 'partida_usuario_fk');
   }
 };
