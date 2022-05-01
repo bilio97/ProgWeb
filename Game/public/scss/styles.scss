@@ -129,8 +129,21 @@
 
  .options {
    text-align: right;
+
  }
 
  .options a{
    padding-left: 4px;
+}
+
+.card-cursos{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.index-cursos{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

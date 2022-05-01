@@ -17,3 +17,9 @@ export function showError(errors, field) {
     return mensagem;
   }
 }
+
+export function isChecked(curso, value) {
+  if (curso && curso.areaId === value) return "checked";
+  return "";
+
+}

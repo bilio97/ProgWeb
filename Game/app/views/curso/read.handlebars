@@ -1,6 +1,11 @@
 <div class="card  text-white bg-info mb-3" style="max-width: 20rem;">
-    <div class="card-header">
+    <div class="card-header card-cursos">
         Sigla: {{curso.sigla}}
+        <div>
+            <a href="http://" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-trash"></i>
+            </a>
+        </div>
     </div>
     <div class="card-body">
         <h4 class="card-title"> {{toUpper curso.nome}}</h4> <br>
@@ -8,3 +13,33 @@
         <b> Área:</b> {{curso.Area.nome}} <br>
     </div>
 </div>
+
+<div class="modal" id="exampleModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Remoção de curso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que deseja remover o curso {{curso.nome}}?
+                Essa operação não poderá ser desfeita.
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                <button id="botao-delecao" type="button" class="btn btn-secondary"> Sim, quero
+                    apagar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const botaoDelecao = document.getElementById('botao-delecao');
+    botaoDelecao.onclick = function () {
+        apagarCurso({{ curso.id }});
+    }
+</script>

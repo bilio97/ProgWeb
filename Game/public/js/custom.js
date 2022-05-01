@@ -79,3 +79,18 @@
         return lines;
     }
 })();
+
+function apagarCurso(id) {
+    console.log(id);
+    $.ajax({
+        url: `/curso/${id}`, //rota que será chamada no servidor
+        type: 'DELETE', //Tipo de requisição http 
+    })
+        .done(function (msg) {
+            console.log(msg);
+            window.location.href = '/curso';
+        })
+        .fail(function (msg) {
+            console.log(msg);
+        })
+}
