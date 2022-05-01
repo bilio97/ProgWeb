@@ -33,6 +33,7 @@ const cursoController = {
                 curso: curso.toJSON()
             });
         } catch (error) {
+            res.redirect('/curso');
             console.log(error);
         }
     },
@@ -50,7 +51,6 @@ const cursoController = {
                 descricao: req.body.descricao,
                 areaId: req.body.areaId
             }
-            console.log(curso);
             try {
                 const registro = await Curso.update(curso, {
                     returning: true,
@@ -60,7 +60,7 @@ const cursoController = {
                 });
                 res.redirect('/curso');
             } catch (error) {
-                console.log(error.errors);
+                req.body.id = id;
                 res.render("curso/update", {
                     curso: req.body,
                     errors: error.errors
