@@ -22,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         len: {
-          args: [4],
-          msg: 'A sigla precisa ter 4 caracteres.'
+          args: [4, 4],
+          msg: 'A sigla precisa ter exatamente 4 caracteres.'
         }
       }
     },

@@ -16,9 +16,11 @@ const cursoController = {
             try {
                 await Curso.create(curso);
                 res.redirect('/curso');
-            } catch (e) {
-                console.log(e.errors);
-                res.render("curso/create", { curso, errors: e.errors })
+            } catch (error) {
+                res.render("curso/create", {
+                    curso: req.body,
+                    errors: error.errors
+                })
             }
 
         }

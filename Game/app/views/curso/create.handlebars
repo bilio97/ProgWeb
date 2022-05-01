@@ -2,43 +2,49 @@
 <form action="/curso/create" method="post">
     <div class="form-group">
         <label for="sigla" class="form-label mt-4">Sigla</label>
-        <input type="text" class="form-control" name="sigla" id="sigla" placeholder="Informe a sigla do curso">
+        <input type="text" class="form-control" name="sigla" id="sigla" placeholder="Informe a sigla do curso"
+            value={{curso.sigla}}>
+        <div class="invalid-feedback d-block">
+            {{showError errors 'sigla'}}
+        </div>
         <small class="form-text text-muted">Em caso de dúvidas, consulte o site da UFAM</small>
     </div>
 
     <div class="form-group">
         <label for="nome" class="form-label mt-4">Nome do Curso</label>
-        <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome do curso">
+        <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe o nome do curso"
+            value={{curso.nome}}>
+        <div class="invalid-feedback d-block">
+            {{showError errors 'nome'}}
+        </div>
     </div>
+
 
     <div class="form-group">
         <label for="descricao" class="form-label mt-4">Descrição do curso</label>
-        <textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
+        <textarea class="form-control" name="descricao" id="descricao" rows="3">{{curso.descricao}}</textarea>
     </div>
 
-    <fieldset class="form-group">
+    <fieldset class=" form-group">
         <legend class="mt-4">Área da Ciência</legend>
         <div class="form-check">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="areaId" id="area" value="1" checked="">
+                <input type="radio" class="form-check-input" name="areaId" id="areaId" value="1">
                 Ciências Exatas. Ex: Computação, Matemática, Estatística, entre outros.
             </label>
         </div>
         <div class="form-check">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="areaId" id="area" value="2">
+                <input type="radio" class="form-check-input" name="areaId" id="areaId" value="2">
                 Ciências Humanas. Ex: Filosofia, Administração, História, entre outros.
             </label>
         </div>
         <div class="form-check disabled">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="areaId" id="area" value="3">
+                <input type="radio" class="form-check-input" name="areaId" id="areaId" value="3">
                 Ciências biológicas. Ex: Enfermagem, Fisioterapia, Biologia, entre outros.
             </label>
         </div>
         <button type="submit" class="btn btn-secondary">Adicionar Curso</button>
-
     </fieldset>
-
-
 </form>
