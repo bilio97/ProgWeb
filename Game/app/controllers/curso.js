@@ -37,10 +37,37 @@ const cursoController = {
         }
     },
     update: async (req, res, next) => {
-        const cursos = await Curso.findAll();
-        res.render('curso/update', {
-            cursos: cursos.map(curso => curso.toJSON())
-        });
+        const { id } = req.params;
+        if (req.route.methods.get) {
+            const curso = await Curso.findByPk(id);
+            res.render('curso/update', {
+                curso: curso.toJSON()
+            });
+        } else {
+            const curso = {
+                sigla: req.body.sigla,
+                nome: req.body.nome,
+                descricao: req.body.descricao,
+                areaId: req.body.areaId
+            }
+            console.log(curso);
+            try {
+                const registro = await Curso.update(curso, {
+                    returning: true,
+                    where: {
+                        id: id,
+                    }
+                });
+                res.redirect('/curso');
+            } catch (error) {
+                console.log(error.errors);
+                res.render("curso/update", {
+                    curso: req.body,
+                    errors: error.errors
+                })
+            }
+
+        }
     },
     remove: async (req, res, next) => {
         const { id } = req.params;

@@ -21,5 +21,12 @@ export function showError(errors, field) {
 export function isChecked(curso, value) {
   if (curso && curso.areaId === value) return "checked";
   return "";
-
 }
+
+export function if_eq(a, b, opts) {
+  if (a == b) {
+    return opts.fn(this);
+  } else {
+    return opts.inverse(this);
+  }
+};

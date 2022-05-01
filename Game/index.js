@@ -16,6 +16,10 @@ app.engine(
     helpers: require(`${__dirname}/app/views/helpers/helpers`),
     layoutsDir: "./app/views/layouts",
     defaultLayout: "main",
+    runtimeOptions: {
+      allowProtoPropertiesByDefault: true,
+      allowProtoMethodsByDefault: true,
+    },
   }));
 
 

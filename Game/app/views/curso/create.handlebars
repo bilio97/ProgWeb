@@ -29,19 +29,22 @@
         <legend class="mt-4">Área da Ciência</legend>
         <div class="form-check">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="areaId" id="areaId" value="1">
+                <input type="radio" class="form-check-input" name="areaId" id="areaId" value="1" {{#if_eq curso.areaId
+                    1}}checked="" {{/if_eq}}>
                 Ciências Exatas. Ex: Computação, Matemática, Estatística, entre outros.
             </label>
         </div>
         <div class="form-check">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="areaId" id="areaId" value="2">
+                <input type="radio" class="form-check-input" name="areaId" id="areaId" value="2" {{#if_eq curso.areaId
+                    2}}checked="" {{/if_eq}}>
                 Ciências Humanas. Ex: Filosofia, Administração, História, entre outros.
             </label>
         </div>
         <div class="form-check disabled">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="areaId" id="areaId" value="3">
+                <input type="radio" class="form-check-input" name="areaId" id="areaId" value="3" {{#if_eq curso.areaId
+                    3}}checked="" {{/if_eq}}>
                 Ciências biológicas. Ex: Enfermagem, Fisioterapia, Biologia, entre outros.
             </label>
         </div>
