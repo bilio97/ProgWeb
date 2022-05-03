@@ -5,6 +5,7 @@ const router = express.Router();
 import mainController from "../controllers/main.js";
 import areaController from "../controllers/area.js";
 import cursoController from "../controllers/curso.js";
+import req from "express/lib/request";
 
 //LOGS
 const logger = morgan;
@@ -34,6 +35,24 @@ router.post("/curso/update/:id", cursoController.update);
 router.get("/curso/:id", cursoController.read);
 router.delete("/curso/:id", cursoController.remove);
 
+router.get("/cookie", (req, res) => {
+  if (!('usuario' in req.cookies)) {
+    res.cookie('usuario', '1234'); //{ maxAge: 6000 }
+    res.send("Usuario nao identificado, criando cookie agora");
+  } else {
+    res.send(`Usuario identificado. ID ${req.cookies['usuario']}`);
+
+  }
+});
+
+router.get("/apagar-cookie", (req, res) => {
+  res.clearCookie('usuario');
+  res.send('Cookie-apagado');
+});
+
+// router.get("/uuid", (req, res) => {
+//   res.send(v4());
+// });
 
 //Get com parâmetros
 router.get("/bemvindo/:nome", function (req, res) {

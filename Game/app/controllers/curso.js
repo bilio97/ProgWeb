@@ -10,7 +10,9 @@ const cursoController = {
     },
     create: async (req, res, next) => {
         if (req.route.methods.get) {
-            res.render('curso/create');
+            res.render('curso/create', {
+                csrf: req.csrfToken()
+            });
         } else {
             const curso = req.body;
             try {

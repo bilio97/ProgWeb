@@ -1,5 +1,6 @@
 <h1 class="text-warning">Adicionar Curso</h1>
 <form action="/curso/create" method="post">
+    <input type="hidden" name="_csrf" value="{{csrf}}" />
     <div class="form-group">
         <label for="sigla" class="form-label mt-4">Sigla</label>
         <input type="text" class="form-control" name="sigla" id="sigla" placeholder="Informe a sigla do curso"
