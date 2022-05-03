@@ -51,10 +51,6 @@ app.use('/js', [
 app.use(cookieParser());
 app.use(csurf({ cookie: true }));
 
-app.get("/uuid", (req, res) => {
-  res.send(uuidv4());
-});
-
 app.use(session({
   genid: (req) => {
     return uuidv4()
@@ -63,17 +59,6 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
-
-app.get("/session", (req, res) => {
-  if (!('qtdItensCarrinho' in req.session)) {
-    req.session.qtdItensCarrinho = 0;
-    res.send("Usuario sem carrinho. Inicializando carrinho de compra")
-  } else {
-    req.session.qtdItensCarrinho++;
-    res.send('Qtd itens no carrinho: ' + req.session.qtdItensCarrinho);
-  }
-
-})
 
 app.use(router);
 
