@@ -1,4 +1,4 @@
-##SKIFREE
+## SKIFREE
 
 O jogo consiste em descer a montanha desviando dos obstáculos usando os comandos:
 
